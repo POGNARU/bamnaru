@@ -9,22 +9,30 @@
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
 
   :root {
-    --cream: #fdf6ec;
-    --cream-deep: #f5e9d0;
-    --gold: #c9933a;
-    --gold-light: #e8c07a;
-    --gold-pale: #f5e6c0;
-    --brown: #3d2b0f;
-    --brown-mid: #7a5530;
-    --brown-light: #a07848;
-    --text: #2c1f0a;
-    --text-mid: #6b4f28;
-    --text-light: #9a7a4a;
-    --border: #e0cc9a;
-    --border-light: #ede0c0;
+    --cream: #0d1220;
+    --cream-deep: #111827;
+    --gold: #c8d8f0;
+    --gold-light: #a0b8d8;
+    --gold-pale: rgba(160, 184, 220, 0.08);
+    --brown: #e8f0ff;
+    --brown-mid: #b8cce8;
+    --brown-light: #8aaac8;
+    --text: #e8f0ff;
+    --text-mid: #b8cce8;
+    --text-light: #7898b8;
+    --border: #1e2d48;
+    --border-light: #1a2538;
+    --moon: #d4e4f8;
+    --navy-deep: #060c18;
+    --navy-mid: #0d1a30;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  header, .hero, .philosophy, .year-block, .info-strip, footer {
+    position: relative;
+    z-index: 1;
+  }
 
   html { scroll-behavior: smooth; }
 
@@ -35,9 +43,49 @@
     line-height: 1.8;
   }
 
+  /* ── STARS ── */
+  .stars-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: var(--min-op, 0.15); transform: scale(1); }
+    50% { opacity: var(--max-op, 0.9); transform: scale(1.3); }
+  }
+
+  /* moon glow */
+  .moon-glow {
+    position: fixed;
+    top: 6vh; right: 8vw;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #f0f6ff 0%, #c8dcf8 30%, rgba(160,192,240,0.15) 65%, transparent 100%);
+    box-shadow: 0 0 60px 20px rgba(180,210,255,0.12), 0 0 120px 40px rgba(140,180,240,0.06);
+    pointer-events: none;
+    z-index: 0;
+    animation: moonFloat 8s ease-in-out infinite;
+  }
+
+  @keyframes moonFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
   /* ── HEADER ── */
   header {
-    background: linear-gradient(180deg, #f0e0b8 0%, var(--cream) 100%);
+    background: linear-gradient(180deg, rgba(8,14,28,0.95) 0%, rgba(13,18,32,0.92) 100%);
     border-bottom: 1px solid var(--border);
     padding: 16px 40px;
     display: flex;
@@ -84,9 +132,9 @@
     text-align: center;
     padding: 80px 24px 60px;
     background:
-      radial-gradient(ellipse at 20% 30%, rgba(210,170,80,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 70%, rgba(200,140,60,0.08) 0%, transparent 60%),
-      var(--cream);
+      radial-gradient(ellipse at 75% 10%, rgba(180,210,255,0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 80%, rgba(100,140,220,0.05) 0%, transparent 50%),
+      linear-gradient(180deg, #060c18 0%, #0d1220 100%);
     position: relative;
     overflow: hidden;
   }
@@ -96,7 +144,7 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold), var(--gold-light), transparent);
+    background: linear-gradient(90deg, transparent, rgba(160,184,220,0.4), rgba(200,220,248,0.8), rgba(160,184,220,0.4), transparent);
   }
 
   .hero-label {
@@ -129,7 +177,7 @@
   .hero-divider {
     width: 60px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    background: linear-gradient(90deg, transparent, rgba(200,220,248,0.6), transparent);
     margin: 28px auto;
   }
 
@@ -221,7 +269,7 @@
 
   /* ── PHILOSOPHY ── */
   .philosophy {
-    background: linear-gradient(135deg, var(--cream-deep) 0%, var(--cream) 100%);
+    background: linear-gradient(135deg, #111827 0%, #0d1220 100%);
     border-top: 1px solid var(--border-light);
     border-bottom: 1px solid var(--border-light);
   }
@@ -248,8 +296,8 @@
   .philosophy-quote {
     margin: 36px 0;
     padding: 24px 28px;
-    border-left: 3px solid var(--gold);
-    background: rgba(210, 170, 80, 0.06);
+    border-left: 3px solid rgba(160,184,220,0.5);
+    background: rgba(160, 184, 220, 0.04);
     border-radius: 0 8px 8px 0;
     font-size: 1rem;
     color: var(--brown-mid);
@@ -264,12 +312,13 @@
 
   .year-block:last-of-type {
     border-bottom: 1px solid var(--border-light);
-    background: linear-gradient(180deg, var(--cream) 0%, #f8f0e0 100%);
+    background: linear-gradient(180deg, #0d1220 0%, #111827 100%);
   }
 
   .annual-theme {
-    background: var(--brown);
-    color: #f5e6c0;
+    background: #0a1428;
+    color: #c8dcf0;
+    border: 1px solid var(--border);
     padding: 20px 28px;
     border-radius: 10px;
     margin-bottom: 40px;
@@ -280,7 +329,7 @@
   .annual-theme .at-label {
     font-size: 0.62rem;
     letter-spacing: 0.3em;
-    color: var(--gold-light);
+    color: #8aaac8;
     font-family: 'Noto Sans KR', sans-serif;
     margin-bottom: 8px;
     display: block;
@@ -289,13 +338,13 @@
   .annual-theme .at-q {
     font-size: 1.05rem;
     font-weight: 600;
-    color: #f0e0b0;
+    color: #e0ecff;
     display: block;
     margin-bottom: 6px;
   }
 
   .annual-theme .at-desc {
-    color: #c8b080;
+    color: #7898b8;
     font-size: 0.85rem;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
@@ -322,7 +371,7 @@
     top: 80px;
     bottom: -24px;
     width: 1px;
-    background: linear-gradient(180deg, var(--gold-light), var(--border-light));
+    background: linear-gradient(180deg, rgba(160,184,220,0.4), rgba(26,37,56,0.2));
   }
 
   .q-left {
@@ -336,8 +385,9 @@
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    background: var(--gold-pale);
-    border: 2px solid var(--gold-light);
+    background: rgba(160,184,220,0.07);
+    border: 1px solid rgba(160,184,220,0.3);
+    box-shadow: 0 0 12px rgba(160,184,220,0.08);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -395,13 +445,13 @@
 
   .q-question {
     font-size: 0.88rem;
-    color: var(--brown-mid);
-    background: var(--gold-pale);
+    color: #c8dcf0;
+    background: rgba(160,184,220,0.06);
     padding: 10px 14px;
     border-radius: 6px;
     margin-bottom: 12px;
     line-height: 1.7;
-    border-left: 2px solid var(--gold-light);
+    border-left: 2px solid rgba(160,184,220,0.3);
   }
 
   .q-connect {
@@ -414,16 +464,17 @@
 
   .q-connect::before {
     content: '→ ';
-    color: var(--gold-light);
+    color: rgba(160,184,220,0.5);
   }
 
   /* ── ANNUAL SUMMARY ── */
   .annual-summary {
     margin-top: 0;
-    background: var(--brown);
+    background: #0a1428;
+    border: 1px solid var(--border);
     padding: 28px 32px;
     border-radius: 12px;
-    color: #f0e0b0;
+    color: #b8cce8;
     font-size: 0.92rem;
     line-height: 1.85;
   }
@@ -431,7 +482,7 @@
   .annual-summary .as-label {
     font-size: 0.62rem;
     letter-spacing: 0.3em;
-    color: var(--gold-light);
+    color: #7898b8;
     font-family: 'Noto Sans KR', sans-serif;
     display: block;
     margin-bottom: 10px;
@@ -439,7 +490,7 @@
 
   /* ── INFO STRIP ── */
   .info-strip {
-    background: var(--cream-deep);
+    background: #111827;
     border-top: 1px solid var(--border-light);
     border-bottom: 1px solid var(--border-light);
   }
@@ -458,8 +509,8 @@
   .info-item {
     text-align: center;
     padding: 24px 16px;
-    background: rgba(255,255,255,0.6);
-    border: 1px solid var(--border-light);
+    background: rgba(160,184,220,0.04);
+    border: 1px solid var(--border);
     border-radius: 10px;
   }
 
@@ -483,8 +534,8 @@
   footer {
     text-align: center;
     padding: 48px 24px 40px;
-    background: var(--brown);
-    color: rgba(245, 225, 180, 0.5);
+    background: #060c18;
+    color: rgba(160, 184, 220, 0.4);
     font-size: 0.72rem;
     letter-spacing: 0.12em;
     font-family: 'Noto Sans KR', sans-serif;
@@ -494,7 +545,7 @@
   footer .footer-name {
     display: block;
     font-size: 1rem;
-    color: var(--gold-light);
+    color: #c8dcf0;
     font-family: 'Noto Serif KR', serif;
     font-weight: 600;
     margin-bottom: 8px;
@@ -504,20 +555,20 @@
   footer .footer-sub {
     display: block;
     margin-bottom: 20px;
-    color: rgba(245, 225, 180, 0.6);
+    color: rgba(160, 184, 220, 0.5);
   }
 
   footer .footer-divider {
     width: 40px;
     height: 1px;
-    background: rgba(210, 170, 80, 0.3);
+    background: rgba(160, 184, 220, 0.2);
     margin: 16px auto;
   }
 
   /* ── SCHEDULE ── */
   .q-schedule {
     margin-top: 14px;
-    border: 1px solid var(--border-light);
+    border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
   }
@@ -525,12 +576,12 @@
   .q-schedule-title {
     font-size: 0.62rem;
     letter-spacing: 0.25em;
-    color: var(--gold);
+    color: #8aaac8;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
     padding: 10px 14px 8px;
-    background: var(--gold-pale);
-    border-bottom: 1px solid var(--border-light);
+    background: rgba(160,184,220,0.05);
+    border-bottom: 1px solid var(--border);
   }
 
   .q-schedule-item {
@@ -541,7 +592,7 @@
     font-size: 0.82rem;
     font-family: 'Noto Sans KR', sans-serif;
     color: var(--text-mid);
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border);
   }
 
   .q-schedule-item:last-child { border-bottom: none; }
@@ -579,6 +630,37 @@
 </style>
 </head>
 <body>
+
+<!-- NIGHT SKY -->
+<div class="moon-glow"></div>
+<div class="stars-canvas" id="starsCanvas"></div>
+
+<script>
+(function() {
+  var canvas = document.getElementById('starsCanvas');
+  var count = 160;
+  for (var i = 0; i < count; i++) {
+    var s = document.createElement('div');
+    s.className = 'star';
+    var size = Math.random() * 2 + 0.5;
+    var dur = (Math.random() * 4 + 2).toFixed(1);
+    var delay = (Math.random() * 5).toFixed(1);
+    var minOp = (Math.random() * 0.1 + 0.05).toFixed(2);
+    var maxOp = (Math.random() * 0.6 + 0.3).toFixed(2);
+    s.style.cssText = [
+      'width:' + size + 'px',
+      'height:' + size + 'px',
+      'top:' + (Math.random() * 100) + '%',
+      'left:' + (Math.random() * 100) + '%',
+      '--dur:' + dur + 's',
+      '--delay:-' + delay + 's',
+      '--min-op:' + minOp,
+      '--max-op:' + maxOp
+    ].join(';');
+    canvas.appendChild(s);
+  }
+})();
+</script>
 
 <!-- HEADER -->
 <header>
@@ -687,6 +769,24 @@
           <p class="q-author">에밀리 브론테 · 을유문화사 · 유명숙 역</p>
           <div class="q-question">억압된 사랑과 복수, 집착은 인간을 어떻게 형성하는가</div>
           <p class="q-connect">히스클리프와 캐시는 태어나면서부터 다른 세계에 놓였습니다. 계급과 환경이 먼저 경계를 그었습니다 — 무엇을 느낄 수 있는지, 무엇을 표현할 수 있는지. 히스클리프는 사랑을 빼앗긴 자리에 복수를 채워 넣고, 캐시는 자신의 감정대로 끝내 살지 못합니다. 그들의 집착과 억압은 개인의 결함이 아니라 살아온 환경이 빚어낸 것입니다. 이 소설은 우리에게 묻습니다 — 고백하지 않은 감정은 인간을 어디로 데려가는가.</p>
+          <div class="q-schedule">
+            <p class="q-schedule-title">토론 일정</p>
+            <div class="q-schedule-item">
+              <span class="s-num">1차 토론</span>
+              <span class="s-date">1월 22일</span>
+              <span class="s-range">1–15장</span>
+            </div>
+            <div class="q-schedule-item">
+              <span class="s-num">2차 토론</span>
+              <span class="s-date">2월 19일</span>
+              <span class="s-range">16–25장</span>
+            </div>
+            <div class="q-schedule-item">
+              <span class="s-num">3차 토론</span>
+              <span class="s-date">3월 19일</span>
+              <span class="s-range">26–34장</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -701,6 +801,24 @@
           <p class="q-author">아우구스티누스 · 동서문화사 · 김희보·강경애 역</p>
           <div class="q-question">죄를 고백할 때 인간은 무엇을 얻는가</div>
           <p class="q-connect">히스클리프가 결코 하지 못한 것을 아우구스티누스는 평생에 걸쳐 행합니다. 고백. 그는 자신의 방탕과 혼란을 언어로 꺼냄으로써 자기 자신을 재건합니다. 고백록은 워더링 하이츠의 침묵에 대한 철학적 응답입니다.</p>
+          <div class="q-schedule">
+            <p class="q-schedule-title">토론 일정</p>
+            <div class="q-schedule-item">
+              <span class="s-num">1차 토론</span>
+              <span class="s-date">4월 30일</span>
+              <span class="s-range">1–4권</span>
+            </div>
+            <div class="q-schedule-item">
+              <span class="s-num">2차 토론</span>
+              <span class="s-date">5월 19일</span>
+              <span class="s-range">5–9권</span>
+            </div>
+            <div class="q-schedule-item">
+              <span class="s-num">3차 토론</span>
+              <span class="s-date">6월 23일</span>
+              <span class="s-range">10–11권</span>
+            </div>
+          </div>
         </div>
       </div>
 
