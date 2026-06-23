@@ -514,6 +514,60 @@
     margin: 16px auto;
   }
 
+  /* ── SCHEDULE ── */
+  .q-schedule {
+    margin-top: 14px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .q-schedule-title {
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    padding: 10px 14px 8px;
+    background: var(--gold-pale);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .q-schedule-item {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    padding: 9px 14px;
+    font-size: 0.82rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--text-mid);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .q-schedule-item:last-child { border-bottom: none; }
+
+  .q-schedule-item .s-num {
+    font-size: 0.62rem;
+    color: var(--gold);
+    font-weight: 500;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .q-schedule-item .s-date {
+    color: var(--text-light);
+    font-size: 0.75rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .q-schedule-item .s-range {
+    font-size: 0.75rem;
+    color: var(--brown-light);
+    font-weight: 300;
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
     header { padding: 14px 20px; }
@@ -661,6 +715,24 @@
           <p class="q-author">나쓰메 소세키 · 현암사 · 송태욱 역</p>
           <div class="q-question">고백하지 못할 때 인간은 어떻게 되는가</div>
           <p class="q-connect">아우구스티누스가 고백을 통해 해방을 찾았다면, 소세키의 '선생'은 끝내 말하지 못합니다. 그 침묵이 한 인간을 서서히 무너뜨리는 과정 — 고백록을 읽은 우리는 이 소설을 전혀 다른 눈으로 보게 됩니다.</p>
+          <div class="q-schedule">
+            <p class="q-schedule-title">토론 일정</p>
+            <div class="q-schedule-item">
+              <span class="s-num">1차 토론</span>
+              <span class="s-date">7월 21일</span>
+              <span class="s-range">상. 선생님과 나 (p.16–103)</span>
+            </div>
+            <div class="q-schedule-item">
+              <span class="s-num">2차 토론</span>
+              <span class="s-date">8월 18일</span>
+              <span class="s-range">중. 부모님과 나 (p.104–147)</span>
+            </div>
+            <div class="q-schedule-item">
+              <span class="s-num">3차 토론</span>
+              <span class="s-date">9월 15일</span>
+              <span class="s-range">하. 선생님과 유서 (p.148–274)</span>
+            </div>
+          </div>
         </div>
       </div>
 
