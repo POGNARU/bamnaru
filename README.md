@@ -2,8 +2,6 @@
 
 **문학으로 느끼고, 철학으로 깊어지는 독서 토론 클래스**
 
-🌐 [bamnaru.netlify.app](https://bamnaru.netlify.app)
-
 ---
 
 ## 클래스 소개
