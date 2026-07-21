@@ -81,7 +81,7 @@
   .cover-inner{
     position:relative;
     background:var(--paper);
-    padding:58px 52px 0;
+    padding:58px 52px 44px;
     box-shadow:0 1px 0 rgba(255,255,255,0.35) inset, 0 2px 14px rgba(40,36,28,0.13);
   }
   .cover-inner::before,.cover-inner::after{
@@ -106,9 +106,14 @@
     font-size:clamp(15.5px,3.2vw,17.5px);
     line-height:2.12;color:var(--ink-2);
     border-left:1px solid var(--hair);
-    padding-left:20px;margin-bottom:34px;
+    padding-left:20px;margin-bottom:0;
   }
-  .ridge{display:block;width:100%;height:96px;}
+  .ridge{
+    display:block;width:100%;height:120px;
+    background:var(--paper);
+    margin-top:-1px;
+    box-shadow:0 2px 14px rgba(40,36,28,0.13);
+  }
 
   /* ── 인용 ── */
   .quote{
@@ -282,22 +287,20 @@
         그가 감춘 것이 무엇인지 우리는 아직 모른다.<br>
         다만 <em>감춘다는 사실 자체</em>가 이미 많은 것을 말하고 있다.
       </p>
-    </div>
-    <svg class="ridge" viewBox="0 0 760 96" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    </div><svg class="ridge" viewBox="0 0 760 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
-        <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse">
-          <rect width="4" height="4" fill="#1C1B18"/>
-          <rect y="2" width="4" height="1.2" fill="#BFB8A8" opacity="0.85"/>
+        <pattern id="grain" width="6" height="6" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#F3F0E6"/>
+          <rect y="1" width="6" height="2.6" fill="#1C1B18"/>
         </pattern>
-        <pattern id="grain2" width="5" height="5" patternUnits="userSpaceOnUse">
-          <rect width="5" height="5" fill="#1C1B18"/>
-          <rect y="2" width="5" height="1.6" fill="#BFB8A8" opacity="0.7"/>
+        <pattern id="grain2" width="7" height="7" patternUnits="userSpaceOnUse">
+          <rect width="7" height="7" fill="#F3F0E6"/>
+          <rect y="1" width="7" height="2.2" fill="#1C1B18"/>
         </pattern>
       </defs>
-      <path d="M0,54 C120,30 200,66 300,50 C410,32 470,58 560,42 C650,26 710,44 760,34 L760,96 L0,96 Z" fill="url(#grain2)" opacity="0.55"/>
-      <path d="M0,72 C110,52 190,80 300,66 C420,50 480,74 570,60 C660,46 720,64 760,56 L760,96 L0,96 Z" fill="url(#grain)"/>
-    </svg>
-  </section>
+      <path d="M0,58 C120,28 200,74 300,52 C410,28 470,64 560,42 C650,20 710,46 760,32 L760,120 L0,120 Z" fill="url(#grain2)" opacity="0.5"/>
+      <path d="M0,84 C110,58 190,96 300,74 C420,52 480,84 570,66 C660,48 720,72 760,62 L760,120 L0,120 Z" fill="url(#grain)"/>
+    </svg></section>
 
   <!-- 여는 질문 -->
   <section class="card reveal">
