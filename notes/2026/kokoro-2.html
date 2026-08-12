@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나루의 밤 · 『마음』 2차 — 중 「부모님과 나」</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --linen:#BFB8A8;
+    --linen-d:#ADA595;
+    --paper:#F3F0E6;
+    --paper-2:#EBE7DA;
+    --ink:#1C1B18;
+    --ink-2:#4A4740;
+    --ink-3:#7C776C;
+    --hair:#CFC9B8;
+    --seal:#7A6A52;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--linen);
+    color:var(--ink-2);
+    font-family:'Noto Sans KR',sans-serif;
+    font-weight:300;
+    line-height:1.95;
+    letter-spacing:-0.005em;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+    position:relative;
+    min-height:100vh;
+  }
+  /* 삼베 짜임 */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.10) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(90deg, rgba(0,0,0,0.055) 0 1px, transparent 1px 3px),
+      radial-gradient(900px 700px at 50% 0%, rgba(255,255,255,0.10), transparent 70%);
+  }
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:52px 18px 80px;}
+
+  /* ── 종이 카드 ── */
+  .card{
+    position:relative;
+    background:var(--paper);
+    padding:48px 52px;
+    margin-bottom:26px;
+    break-inside:avoid;
+    box-shadow:0 1px 0 rgba(255,255,255,0.35) inset, 0 2px 14px rgba(40,36,28,0.13);
+  }
+  /* 표지 라벨의 두 세로선 */
+  .card::before,.card::after{
+    content:"";position:absolute;top:26px;bottom:26px;width:1px;
+    background:var(--hair);
+  }
+  .card::before{left:26px;}
+  .card::after{right:26px;}
+
+  .eyebrow{
+    font-family:'Nanum Myeongjo',serif;
+    font-size:12px;letter-spacing:0.42em;
+    color:var(--ink-3);margin-bottom:15px;
+  }
+  h1,h2,h3{font-family:'Nanum Myeongjo',serif;font-weight:700;color:var(--ink);}
+  h2{font-size:22px;letter-spacing:0.02em;line-height:1.72;margin-bottom:14px;}
+  .rule{width:38px;height:1px;background:var(--ink-3);margin-bottom:24px;opacity:0.6;}
+  .sub{font-size:13.5px;color:var(--ink-3);margin:-12px 0 26px;letter-spacing:0.01em;}
+
+  p{margin-bottom:15px;font-size:15.5px;}
+  p:last-child{margin-bottom:0;}
+  em{font-style:normal;font-weight:500;color:var(--ink);}
+  .accent{color:var(--ink);font-weight:500;border-bottom:1px solid var(--hair);}
+
+  /* ── 표제면 ── */
+  .cover{padding:0;background:transparent;box-shadow:none;overflow:hidden;margin-bottom:26px;}
+  .cover::before,.cover::after{display:none;}
+  .cover-inner{
+    position:relative;
+    background:var(--paper);
+    padding:58px 52px 44px;
+    box-shadow:0 1px 0 rgba(255,255,255,0.35) inset, 0 2px 14px rgba(40,36,28,0.13);
+  }
+  .cover-inner::before,.cover-inner::after{
+    content:"";position:absolute;top:30px;bottom:0;width:1px;background:var(--hair);
+  }
+  .cover-inner::before{left:26px;}
+  .cover-inner::after{right:26px;}
+  .cover .vert{
+    position:absolute;top:56px;right:56px;
+    writing-mode:vertical-rl;
+    font-family:'Yu Mincho','Hiragino Mincho ProN','MS Mincho','Nanum Myeongjo',serif;
+    font-size:15px;letter-spacing:0.34em;
+    color:var(--ink-3);
+  }
+  .cover h1{
+    font-size:clamp(26px,5.4vw,36px);
+    line-height:1.64;margin:24px 0 26px;
+  }
+  .cover .lead{font-size:15px;color:var(--ink-3);margin-bottom:0;letter-spacing:0.04em;}
+  .cover .thesis{
+    font-family:'Nanum Myeongjo',serif;
+    font-size:clamp(15.5px,3.2vw,17.5px);
+    line-height:2.12;color:var(--ink-2);
+    border-left:1px solid var(--hair);
+    padding-left:20px;margin-bottom:0;
+  }
+  .ridge{
+    display:block;width:100%;height:120px;
+    background:var(--paper);
+    margin-top:-1px;
+    box-shadow:0 2px 14px rgba(40,36,28,0.13);
+  }
+
+  /* ── 인용 ── */
+  .quote{
+    background:var(--paper-2);
+    padding:22px 24px;
+    margin:6px 0 26px;
+    break-inside:avoid;
+  }
+  .quote p{
+    font-family:'Nanum Myeongjo',serif;
+    font-size:15.5px;line-height:2.1;color:var(--ink);margin-bottom:10px;
+  }
+  .quote .cite{
+    display:block;font-size:12px;color:var(--ink-3);
+    letter-spacing:0.14em;margin:0;
+  }
+
+  /* ── 질문 ── */
+  .q{padding:22px 0;border-bottom:1px solid var(--hair);break-inside:avoid;}
+  .q:last-of-type{border-bottom:none;padding-bottom:0;}
+  .q h3{
+    font-size:17px;margin-bottom:9px;line-height:1.7;
+    display:flex;align-items:baseline;gap:13px;
+  }
+  .q h3 .no{
+    flex:none;width:26px;height:26px;line-height:24px;
+    border:1px solid var(--ink-3);border-radius:50%;
+    text-align:center;font-size:12px;font-weight:400;
+    color:var(--ink-2);transform:translateY(2px);
+  }
+  .q p{font-size:14.5px;color:var(--ink-2);margin-bottom:0;padding-left:39px;}
+  .q .quote{margin-left:39px;}
+
+  /* ── 소제목 ── */
+  .subhead{
+    font-family:'Nanum Myeongjo',serif;
+    font-weight:700;font-size:15.5px;
+    color:var(--seal);letter-spacing:0.04em;
+    margin:30px 0 14px;
+  }
+
+  /* ── 파고들 지점 ── */
+  .dig{
+    background:var(--paper-2);
+    border-top:1px solid var(--hair);
+    border-bottom:1px solid var(--hair);
+    padding:22px 24px;margin-top:6px;
+    break-inside:avoid;
+  }
+  .dig .label{
+    display:block;font-family:'Nanum Myeongjo',serif;
+    font-size:11.5px;letter-spacing:0.34em;
+    color:var(--ink-3);margin-bottom:12px;
+  }
+  .dig p{font-size:14.5px;line-height:1.98;margin-bottom:11px;color:var(--ink-2);}
+  .dig p:last-child{margin-bottom:0;}
+  /* 곁가지 — 배경 없이 선만 */
+  .dig.light{
+    background:transparent;
+    border-bottom:none;
+    padding:20px 0 0;
+    margin-top:24px;
+  }
+
+  .note{
+    font-size:13px;color:var(--ink-3);
+    border-top:1px solid var(--hair);
+    padding-top:16px;margin-top:20px;line-height:1.9;
+  }
+
+  /* ── 닫는 카드 ── */
+  .closing{background:var(--ink);text-align:center;padding:62px 40px;}
+  .closing::before,.closing::after{background:rgba(243,240,230,0.22);}
+  .closing blockquote{
+    font-family:'Nanum Myeongjo',serif;
+    font-size:clamp(17px,3.7vw,21px);
+    line-height:2.15;font-weight:700;color:var(--paper);
+  }
+  .closing blockquote .accent{color:#E4CFA8;border-bottom:none;}
+  .closing .who{
+    font-size:12px;letter-spacing:0.26em;
+    color:#9A948A;margin-top:26px;
+  }
+
+  /* ── 다음 회차 ── */
+  .next{padding:38px 52px;}
+  .next .eyebrow{margin-bottom:18px;}
+  .next .rows{width:100%;border-collapse:collapse;font-size:14.5px;}
+  .next .rows tr{border-bottom:1px solid var(--hair);}
+  .next .rows tr:last-child{border-bottom:none;}
+  .next .rows td{padding:13px 4px;color:var(--ink-2);}
+  .next .rows td:first-child{
+    font-family:'Nanum Myeongjo',serif;color:var(--ink-3);
+    width:56px;letter-spacing:0.06em;
+  }
+  .next .rows td:last-child{text-align:right;color:var(--ink-3);font-size:13px;white-space:nowrap;}
+  .next .rows tr.on td{color:var(--ink);}
+  .next .rows tr.on td:first-child{color:var(--seal);font-weight:700;}
+  .next .rows a{color:inherit;text-decoration:none;border-bottom:1px solid var(--hair);}
+  .next .book{
+    margin-top:22px;padding-top:18px;
+    border-top:1px solid var(--hair);
+    font-size:13px;color:var(--ink-3);line-height:1.9;
+  }
+
+  /* ── 푸터 ── */
+  .footer{text-align:center;padding-top:14px;}
+  .footer .line1{
+    font-family:'Nanum Myeongjo',serif;
+    font-size:14px;color:#5E594E;
+    letter-spacing:0.06em;line-height:2.2;
+  }
+  .footer .sig{font-size:12px;margin-top:16px;color:#6B665B;letter-spacing:0.34em;}
+
+  /* ── 리빌 ── */
+  .reveal{opacity:1;transform:none;}
+  html.anim .reveal{
+    opacity:0;transform:translateY(15px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  html.anim .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    html.anim .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
+  }
+
+  @media (max-width:560px){
+    .card{padding:34px 24px;}
+    .card::before,.card::after{display:none;}
+    .cover-inner{padding:40px 24px 0;}
+    .cover-inner::before,.cover-inner::after{display:none;}
+    .cover .vert{display:none;}
+    .next{padding:30px 24px;}
+    .closing{padding:46px 26px;}
+    .q p{padding-left:0;}
+    .q .quote{margin-left:0;}
+    .ridge{height:64px;}
+  }
+
+  /* ── 인쇄 ── */
+  @media print{
+    @page{margin:14mm;}
+    body{background:#fff;}
+    body::before{display:none;}
+    .wrap{max-width:100%;padding:0;}
+    .card,.cover-inner{box-shadow:none;border:1px solid #ccc;margin-bottom:16px;padding:26px 28px;}
+    .card::before,.card::after,.cover-inner::before,.cover-inner::after{display:none;}
+    .closing{background:#fff;border:1px solid #ccc;}
+    .closing blockquote{color:#111;}
+    .closing blockquote .accent{color:#111;}
+    .closing .who{color:#666;}
+    .q,.dig,.quote{break-inside:avoid;page-break-inside:avoid;}
+    html.anim .reveal{opacity:1 !important;transform:none !important;}
+  }
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180.png">
+</head>
+<body>
+<a href="https://pognaru.com/reading/" style="display:block;max-width:760px;margin:0 auto;padding:20px 24px 0;font-family:'Noto Sans KR',sans-serif;font-size:13px;letter-spacing:.04em;color:#7A6A52;text-decoration:none;">← 독서 자료</a>
+<div class="wrap">
+
+  <!-- 표제면 -->
+  <section class="card cover reveal">
+    <div class="cover-inner">
+      <div class="vert">こころ</div>
+      <div class="eyebrow">포 근 나 루 · 나 루 의 밤</div>
+      <div class="rule"></div>
+      <p class="lead">2차 · 중 「부모님과 나」</p>
+      <h1>
+        나는 왜<br>
+        아버지가 부끄러웠는가
+      </h1>
+      <p class="thesis">
+        '나'는 배운 눈을 가지고 고향으로 돌아온다.<br>
+        그 눈에 아버지는 촌스럽고, 형은 세속적이고, 집은 좁다.<br>
+        다만 그 눈이 무엇을 <em>보게 했는지</em>보다,<br>
+        무엇을 <em>보지 못하게 했는지</em>가 이 이야기의 자리다.
+      </p>
+    </div><svg class="ridge" viewBox="0 0 760 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <pattern id="grain" width="6" height="6" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#F3F0E6"/>
+          <rect y="1" width="6" height="2.6" fill="#1C1B18"/>
+        </pattern>
+        <pattern id="grain2" width="7" height="7" patternUnits="userSpaceOnUse">
+          <rect width="7" height="7" fill="#F3F0E6"/>
+          <rect y="1" width="7" height="2.2" fill="#1C1B18"/>
+        </pattern>
+      </defs>
+      <path d="M0,58 C120,28 200,74 300,52 C410,28 470,64 560,42 C650,20 710,46 760,32 L760,120 L0,120 Z" fill="url(#grain2)" opacity="0.5"/>
+      <path d="M0,84 C110,58 190,96 300,74 C420,52 480,84 570,66 C660,48 720,72 760,62 L760,120 L0,120 Z" fill="url(#grain)"/>
+    </svg></section>
+
+  <!-- 여는 질문 -->
+  <section class="card reveal">
+    <div class="eyebrow">여 는 질 문</div>
+    <h2>가볍게 문을 두드리며</h2>
+    <div class="rule"></div>
+    <p class="sub">본격적인 이야기 전에, 서로의 감각을 맞추는 자리</p>
+
+    <div class="q">
+      <h3><span class="no">1</span>매미 소리를 듣고 슬퍼져 본 적이 있는가</h3>
+      <div class="quote">
+        <p>"여름에 고향으로 돌아와 귀청을 찢는 듯한 매미 소리를 들으며 가만히 앉아 있으면 묘하게 마음이 슬퍼지곤 했다."</p>
+        <span class="cite">p. 122</span>
+      </div>
+      <p>시끄러운 소리인데 슬프다. 이 어긋남이 어디서 오는지 각자 답이 다를 것이다.
+      소리 말고도 좋다. 어떤 냄새, 어떤 빛, 어떤 계절의 공기가 나를 이유 없이 가라앉힌 적이 있는가.</p>
+    </div>
+
+    <div class="q">
+      <h3><span class="no">2</span>슬픔의 종류가 바뀌는 것을 알아채는 사람</h3>
+      <div class="quote">
+        <p>"나의 애수는 올여름 고향으로 돌아온 이후 점차 정조(情調)가 바뀌었다.
+        유지매미 소리가 애매미 소리로 바뀌는 것처럼 나를 둘러싼 사람의 운명이
+        커다란 윤회 속에서 서서히 움직이고 있는 것처럼 여겨졌다."</p>
+        <span class="cite">p. 123</span>
+      </div>
+      <p>'나'는 슬픔이 사라진 것이 아니라 <em>다른 슬픔이 된 것</em>을 안다.
+      내 마음에서 그런 교대를 알아챈 적이 있는가. 무엇이 무엇으로 바뀌었는가.</p>
+    </div>
+  </section>
+
+  <!-- 논점 1 -->
+  <section class="card reveal">
+    <div class="eyebrow">논 점 하 나</div>
+    <h2>아버지의 기쁨은<br>왜 불쾌했는가</h2>
+    <div class="rule"></div>
+    <p class="sub">'나'는 아버지와 선생님을 나란히 놓고 잰다. 그리고 아버지가 진다</p>
+
+    <div class="quote">
+      <p>"입으로는 축하한다면서 마음속으로 별거 아니라고 생각하는 선생님이,
+      그리 대단한 일도 아닌데 무슨 대단한 일처럼 기뻐해주는 아버지보다 내게는 오히려 고상해 보였다.
+      나는 결국 아버지의 무지에서 나오는 촌스러움이 불쾌했던 것이다."</p>
+      <span class="cite">p. 105</span>
+    </div>
+
+    <div class="dig">
+      <span class="label">파 고 들 지 점</span>
+      <p>배운 사람은 전에 안 보이던 것을 본다. 아버지의 기쁨이 실제보다 부풀어 있다는 것을 '나'는 알아본다.
+      그것을 감추지 않고 '불쾌했다'고 적은 것도 숨김이 없다.
+      그러나 그 눈이 열린 대가로 무엇이 닫혔는지는 적혀 있지 않다.</p>
+      <p>'나'가 실제로 한 일은 대학을 졸업한 것뿐이다. 이룬 것 없이 시선만 먼저 높아지는 일이 있다.
+      <span class="accent">배움이 사람을 보는 눈을 넓히는가, 좁히는가.</span>
+      넓힌다면 왜 '나'는 아버지 한 사람조차 담지 못하는가.</p>
+    </div>
+
+    <p style="margin-top:26px;">그리고 아버지의 대답이 이 판 전체를 흔든다.</p>
+
+    <div class="quote">
+      <p>"애써 정성을 다해 키운 아들이 자신이 죽은 후에 졸업하는 것보다는
+      살아 있을 때 졸업해주는 것이 부모한테는 기쁜 일 아니겠냐? (…)
+      그러니까 졸업은 너한테보다는 나한테 다행인 거야. 알겠지?"</p>
+      <span class="cite">p. 105</span>
+    </div>
+
+    <p>아버지는 자기 기쁨이 아들의 성취와 무관하다는 것을 <em>이미 알고 있다.</em>
+    대단한 일이 아님도 알고 있다. 그저 자기가 살아서 그걸 본 것이 다행이라고 말한다.</p>
+    <p>이것은 무지한 사람의 말이 아니다.
+    그렇다면 '나'가 본 '촌스러움'은 어디에 있었던 것인가. 아버지에게 있었는가, 아버지를 보는 눈에 있었는가.</p>
+
+    <div class="dig light">
+      <span class="label">한 겹 더</span>
+      <p>비교한 행위 자체를 문제 삼을 수도 있다. 사람을 나란히 놓고 재는 일은 애초에 가능한가.
+      '나'는 왜 하필 그 둘을 같은 저울에 올렸는가. 저울에 올리는 순간 이미 정해지는 것이 있지 않은가.</p>
+    </div>
+
+    <div class="subhead">같은 아버지가 이런 말도 한다</div>
+
+    <div class="quote">
+      <p>"부르지 않아도 되지만, 부르지 않으면 또 뭐라고들 하니까."</p>
+      <span class="cite">p. 110</span>
+    </div>
+
+    <p>누구를 부르고 부르지 않을지를 두고 하는 말이다. 아버지는 마을 사람들의 뒷말을 걱정한다.
+    105쪽에서 자기 몫의 기쁨을 당당히 말하던 사람과, 남들이 뭐라 할지를 살피는 이 사람이 하나다.</p>
+    <p>그래서 아버지는 한마디로 정리되지 않는다.
+    무지한 사람이라 부르면 105쪽의 대답이 걸리고, 마음이 깊은 사람이라 부르면 뒷말을 걱정하는 이 장면이 걸린다.
+    <span class="accent">어느 이름도 맞지 않는다면, '나'가 붙인 '촌스러움'이라는 이름은 맞았는가.</span></p>
+  </section>
+
+  <!-- 논점 2 -->
+  <section class="card reveal">
+    <div class="eyebrow">논 점 둘</div>
+    <h2>교육은<br>자식을 데려간다</h2>
+    <div class="rule"></div>
+    <p class="sub">곁에 두고 싶어 하면서 동시에 멀리 보내려 하는 마음</p>
+
+    <div class="quote">
+      <p>"공부를 시킨 결과 형은 지금 먼 곳에 있다. 교육을 받은 결과 나는 또 도쿄에서 살 생각을 굳혔다."</p>
+      <span class="cite">p. 119</span>
+    </div>
+
+    <div class="quote">
+      <p>"자신이 죽은 후 고독한 어머니를 텅 빈 집에 남겨두는 것도 심히 불안한 일이었다.
+      그러면서도 도쿄에서 좋은 일자리를 찾으라고 강권하는 아버지의 생각에는 모순이 있었다."</p>
+      <span class="cite">p. 119</span>
+    </div>
+
+    <div class="dig">
+      <span class="label">파 고 들 지 점</span>
+      <p>교육은 자식을 부모에게서 떼어놓는 일인가. 그렇다면 아버지는 자기 손으로 자기 곁을 비운 셈이다.
+      그것을 알면서도 시켰다면, 그 선택을 무엇이라 불러야 하는가.</p>
+      <p>아버지는 자식이 성공하기를 바라는 마음과 자기 곁에 남기를 바라는 마음 중 어느 쪽도 놓지 않는다.
+      놓지 않는다는 것은 결정을 미룬다는 뜻이기도 하다.
+      <span class="accent">미뤄진 결정은 결국 아들이 진다</span> — 남으면 아버지의 뜻을 어기는 것이 되고,
+      떠나면 어머니를 텅 빈 집에 두는 것이 된다.</p>
+      <p>다만 그것을 '모순'이라 이름 붙인 쪽은 아버지가 아니라 '나'다.
+      아버지는 한 번도 자기 마음이 모순이라고 말하지 않았다.
+      두 마음이 동시에 참인 자리가 사람에게 있는가. 있다면 그것을 모순이라 부르는 일은 정확한가.</p>
+    </div>
+
+    <div class="dig light">
+      <span class="label">한 겹 더</span>
+      <p>부모가 자식에게 바라는 것이 서로 부딪힐 때, 자식은 무엇을 근거로 고르는가.
+      이 대목에서 '나'는 고르지 않는다. 미룬다. 미루는 것도 하나의 선택인가.</p>
+    </div>
+  </section>
+
+  <!-- 논점 3 -->
+  <section class="card reveal">
+    <div class="eyebrow">논 점 셋</div>
+    <h2>같은 '내가 죽으면'을<br>두 사람에게 듣다</h2>
+    <div class="rule"></div>
+    <p class="sub">한쪽은 웃음을 띤 가정이었고, 다른 쪽은 언제 일어날지 모르는 사실이다</p>
+
+    <div class="quote">
+      <p>"내가 죽으면 부디 어머니를 잘 모셔라."</p>
+      <span class="cite">p. 127</span>
+    </div>
+
+    <p>'나'는 이 말을 두 번 듣는다. 졸업하던 날 저녁 선생님이 사모님에게 했던 말, 그리고 지금 아버지의 말.</p>
+
+    <div class="dig">
+      <span class="label">파 고 들 지 점</span>
+      <p>죽어가는 아버지 앞에서 '나'가 떠올린 것은 아버지의 병이 아니라 그날 저녁 선생님의 얼굴이었다.</p>
+      <p>그리고 몇 쪽 뒤에 이 문장이 온다 —
+      <span class="accent">"나는 아버지에게 야단을 맞는 것보다, 어머니의 기분을 상하게 하는 것보다
+      선생님에게 경멸당하는 것이 훨씬 더 두려웠다."</span> (p. 129–130)</p>
+      <p>미숙하다고 부르기는 쉽다. 다만 그렇게 부르고 나면 더 물을 것이 없어진다.</p>
+      <p>왜 사람은 언제나 곁에 있어줄 사람 앞에서 덜 두려운가.
+      두렵지 않다는 것은 <em>믿는다는 뜻인가, 함부로 해도 된다고 여긴다는 뜻인가.</em></p>
+      <p>아버지에게는 야단맞는 것을 걱정하고 선생님에게는 경멸당하는 것을 걱정한다. 두 두려움은 층이 다르다.
+      평가받는 관계와 평가받지 않는 관계 중 어느 쪽이 더 깊은 관계인가.</p>
+      <p>'나'는 선생님을 사랑해서 두려운가, 인정받고 싶어서 두려운가. 그 둘은 구분되는가.
+      구분되지 않는다면, 우리가 사랑이라 불러온 것들 가운데 몇이 여기에 해당하는가.</p>
+    </div>
+  </section>
+
+  <!-- 논점 4 -->
+  <section class="card reveal">
+    <div class="eyebrow">논 점 넷</div>
+    <h2>형의 '에고이스트' 비판은<br>정당한가</h2>
+    <div class="rule"></div>
+    <p class="sub">형은 선생님을 본 적이 없다. 동생의 말만 듣고 판단한다</p>
+
+    <div class="quote">
+      <p>"에고이스트는 안 좋아. 아무 일도 하지 않고 살려는 것은 뻔뻔한 생각이니까 말이야.
+      자기가 갖고 있는 재능을 최대한 발휘하지 않는 건 잘못이지."</p>
+      <span class="cite">p. 139</span>
+    </div>
+
+    <div class="dig light" style="margin-top:0;padding-top:0;border-top:none;">
+      <span class="label">1 차 와 이 어 지 는 자 리</span>
+      <p>상편 논점 2에서 우리는 선생님의 은둔이 속죄인가 회피인가를 물었다.
+      형의 말은 그 물음에 <em>작품 안에서 날아온 답 하나</em>다. 형은 '회피' 쪽에 선다.
+      다만 그는 선생님의 과거를 모른다. 이유를 모르는 사람의 판단은 어디까지 유효한가.</p>
+    </div>
+
+    <div class="dig">
+      <span class="label">파 고 들 지 점</span>
+      <p>세속적인 말이라고 물리치기는 쉽다. 그런데 틀린 데를 짚기가 어렵다.
+      아무것도 하지 않는 삶은 누군가의 노동 위에 얹혀 있다. 선생님이 쓰는 돈도 어디선가 온 돈이다.
+      재능을 쓰지 않는 것을 개인의 취향이라 부를 수 있는가, 아니면 몫을 지지 않는 일이라 불러야 하는가.</p>
+      <p>그런데 무엇을 '재능을 발휘한 삶'이라 부를지 정하는 권한은 누구에게 있는가.
+      형의 잣대는 결국 세상의 잣대다. 그리고 선생님이 등진 것이 바로 그 세상이다.
+      <span class="accent">등진 사람을 그 세상의 자로 재는 일은 공정한가.</span>
+      그렇다면 무엇으로 재야 공정한가 — 잴 자가 아예 없다는 답도 답인가.</p>
+    </div>
+
+    <div class="dig light">
+      <span class="label">한 겹 더</span>
+      <p>이 비판은 선생님만 겨누지 않는다. '나'도 졸업한 뒤 아무 일도 하지 않고 있다.
+      형이 정말 겨눈 것은 누구인가. 그리고 '나'는 왜 그 자리에서 형에게 대꾸하지 못했는가.</p>
+    </div>
+  </section>
+
+  <!-- 논점 5 -->
+  <section class="card reveal">
+    <div class="eyebrow">논 점 다 섯</div>
+    <h2>자유를 얻어 말하고,<br>그 자유를 영원히 잃는다</h2>
+    <div class="rule"></div>
+    <p class="sub">상편에서 말하지 않겠다던 사람이 이제 말하겠다고 한다. 그 조건이 자기 죽음이다</p>
+
+    <div class="quote">
+      <p>"따라서 그 자유를 이용할 수 있을 때 이용하지 않으면
+      내 과거를 자네의 머리에 간접적인 경험으로서 가르쳐줄 기회를 영원히 잃게 될 것이네."</p>
+      <span class="cite">p. 144</span>
+    </div>
+
+    <div class="quote">
+      <p>'자유를 얻었으니 말하겠다. 하지만 그 자유는 다시 영원히 잃어야만 한다.'<br>
+      나는 마음속으로 이렇게 되뇌며 그 의미를 알아내려고 애썼다.</p>
+      <span class="cite">p. 145</span>
+    </div>
+
+    <div class="quote">
+      <p>"이 편지가 자네 손에 닿을 무렵이면 나는 이미 이 세상에 없을 걸세. 진작 죽었겠지."</p>
+      <span class="cite">p. 146</span>
+    </div>
+
+    <div class="dig">
+      <span class="label">파 고 들 지 점 하 나</span>
+      <p>선생님은 왜 '나'가 상경할 때까지 기다리지 않았는가. 얼굴을 보고 말할 수 있었는데 그러지 않았다.
+      만나서 하는 말과 편지로 남기는 말은 무엇이 다른가.
+      <span class="accent">말은 반응을 부르고, 글은 반응을 허락하지 않는다.</span></p>
+      <p>살아서는 끝내 못 할 말이 있다. 죽음을 담보로 걸어야만 열리는 입이 있다면,
+      그것은 한 사람이 낼 수 있는 가장 높은 값이다.
+      그런데 값을 높이 치른 말일수록 받는 사람은 거절할 수 없게 된다.
+      반박도 위로도 되돌려 보낼 곳이 없다. 죽음을 예고한 글은 읽는 사람의 남은 평생에 얹힌다.</p>
+      <p>주는 일과 지우는 일은 어디서 갈라지는가.
+      무엇을 건넸느냐로 갈라지는가, <em>상대에게 거절할 자리를 남겼느냐</em>로 갈라지는가.</p>
+    </div>
+
+    <div class="dig light">
+      <span class="label">파 고 들 지 점 둘</span>
+      <p>'나'는 아버지가 위독한 자리를 두고 기차를 탄다. 죽어가는 아버지를 두고 죽었다는 사람에게 간다.</p>
+      <p>이 선택을 옳다 그르다로 판정하지 말고, 먼저 이렇게 묻자.
+      <span class="accent">그 순간 '나'를 움직인 것은 무엇이었는가.</span>
+      사랑인가, 궁금함인가, 오래 갈망해온 것이 마침내 열린다는 신호인가.
+      그리고 우리는 각자 그런 순간에 어느 쪽으로 발을 뗐는가.</p>
+    </div>
+
+    <p class="note">이 편지가 3차(9월 15일) 「선생님과 유서」의 전부다. 중편은 그 문 앞에서 끝난다.</p>
+  </section>
+
+  <!-- 마무리 질문 -->
+  <section class="card reveal">
+    <div class="eyebrow">마 무 리 질 문</div>
+    <h2>작품에서 나에게로</h2>
+    <div class="rule"></div>
+    <p class="sub">이야기를 덮기 전, 각자의 자리로 가져가 보는 물음</p>
+
+    <div class="q">
+      <h3><span class="no">6</span>부모를 '다시 보게 된' 순간이 있었는가</h3>
+      <p>어느 날 부모가 전과 다르게 보였던 때. 작아 보였든, 처음으로 커 보였든.
+      그때 나는 무엇을 알게 되었고 무엇을 잃었는가.
+      '나'처럼 불쾌했는가, 아니면 미안했는가. 그 감정을 그때 부모에게 말했는가.</p>
+    </div>
+
+    <div class="q">
+      <h3><span class="no">7</span>가까운 사람보다 먼 사람의 시선이 더 두려웠던 적이 있는가</h3>
+      <p>가족의 서운함보다 어떤 사람의 실망이 더 무서웠던 때.
+      그 사람은 누구였고, 나는 그에게서 무엇을 얻고 싶었는가.
+      지금 돌아보면 그 두려움은 정당했는가.</p>
+    </div>
+  </section>
+
+  <!-- 닫는 인용 -->
+  <section class="card closing reveal">
+    <blockquote>
+      나는 그때 그 등불이<br>
+      소리 없는 소용돌이 속으로<br>
+      휩쓸려 들어가고 있다는 걸<br>
+      <span class="accent">알지 못했다.</span>
+    </blockquote>
+    <div class="who">『마음』 중 · p. 116</div>
+  </section>
+
+  <!-- 닫는 인용 해설 -->
+  <section class="card reveal">
+    <div class="eyebrow">덧 붙 이 는 말</div>
+    <h2>이 문장을 쓴 사람은 누구인가</h2>
+    <div class="rule"></div>
+
+    <div class="quote">
+      <p>"깜깜한 가운데서도 움직이지 않으면 안 되는 불안하고 어수선한 도회에서
+      내게는 선생님의 집이 한 점 등불 같았다.
+      나는 그때 그 등불이 소리 없는 소용돌이 속으로 휩쓸려 들어가고 있다는 걸 알지 못했다.
+      얼마 후에는 그 등불도 픽 꺼지고 말 운명을 눈앞에 두고 있다는 것 역시 모르고 있었다."</p>
+      <span class="cite">p. 116</span>
+    </div>
+
+    <p>이 대목에는 '나'가 둘 있다. 등불을 보고 있던 그때의 '나'와,
+    그 불이 꺼진 것을 다 보고 나서 이 문장을 적고 있는 '나'.</p>
+    <p><em>"알지 못했다"는 말은 나중의 '나'만 쓸 수 있다.</em>
+    우리는 결말을 아는 사람의 목소리로, 아직 아무것도 모르던 시절을 읽고 있다.</p>
+    <p>나에게 등불이었던 사람은 누구였는가. 그때 나는 그 불이 무엇을 태우고 있는지 알았는가.</p>
+  </section>
+
+  <!-- 함께 읽는 길 -->
+  <section class="card next reveal">
+    <div class="eyebrow">함 께 읽 는 길</div>
+    <table class="rows">
+      <tr><td>1차</td><td><a href="kokoro-1.html">상 · 선생님과 나</a></td><td>7/21 (화) · p.16–103</td></tr>
+      <tr class="on"><td>2차</td><td>중 · 부모님과 나</td><td>8/18 (화) · p.104–147</td></tr>
+      <tr><td>3차</td><td>하 · 선생님과 유서</td><td>9/15 (화) · p.148–274</td></tr>
+    </table>
+    <p class="book">나쓰메 소세키 『마음』 · 현암사 · 송태욱 옮김<br>
+    인용한 쪽수는 모두 이 판본을 따릅니다.</p>
+  </section>
+
+  <!-- 푸터 -->
+  <div class="footer reveal">
+    <p class="line1">
+      답을 서두르지 않습니다.<br>
+      다음 범위를 함께 읽고, 이 물음이 어디로 가는지 봅니다.
+    </p>
+    <p class="sig">포 근 나 루</p>
+    <p style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(28,27,24,.12);font-family:'Noto Sans KR',sans-serif;font-size:13px;line-height:2;letter-spacing:.02em;">
+      <a href="https://pognaru.com/reading/" style="color:#7A6A52;text-decoration:none;border-bottom:1px solid rgba(122,106,82,.3);">독서 자료</a>
+      &nbsp;·&nbsp;
+      <a href="../../" style="color:#7A6A52;text-decoration:none;border-bottom:1px solid rgba(122,106,82,.3);">나루의 밤 커리큘럼</a>
+      &nbsp;·&nbsp;
+      <a href="https://pognaru.com/" style="color:#7A6A52;text-decoration:none;border-bottom:1px solid rgba(122,106,82,.3);">포근나루</a>
+    </p>
+  </div>
+
+</div>
+
+<script>
+  document.documentElement.classList.add('anim');
+
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // 안전장치: 2.5초 뒤 무조건 전체 표시 (카카오톡 인앱 브라우저 등 대비)
+  setTimeout(function(){
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }, 2500);
+</script>
+</body>
+</html>
